@@ -1,0 +1,1156 @@
+///// maniere d'integrer Javascript à une page web
+
+/// manière 1
+ <script src="../js/cours.js"></script>
+
+/// manière 2
+<script type="text/javascript">
+
+
+
+
+
+/////////////// variables 
+
+const pi = 3.14;
+let age = 30;
+var nombreDeJoursDeVacances = 48;
+
+/////////// Ecruture
+
+let ageChien = prompt("Quel age a t'il?");
+document.write(maVariable);
+console.log("bonjour");
+
+//////////// condition if avec un 
+if (numberOfGuests == numberOfSeats) {
+    // tous les sièges sont occupés
+} else if (numberOfGuests < numberOfSeats) {
+    // autoriser plus d'invités
+} else {
+    // ne pas autoriser de nouveaux invités
+}
+
+
+<    inférieur à ;
+
+<=   inférieur ou égal à ;
+
+==   égal à ;
+
+>=    supérieur ou égal à ;
+
+>    supérieur à ;
+
+!=    différent de.
+
+
+&&  — ET logique — pour vérifier si deux conditions sont toutes les deux vraies ;
+
+||   — OU logique — pour vérifier si au moins une condition est vraie ;
+
+!   — NON logique — pour vérifier si une condition n'est pas vraie. 
+
+
+
+
+
+
+
+//// condition if avec un booleen
+
+let userLoggedIn = true;
+let welcomeMessage = ''; // déclarer la variable ici
+
+if (userLoggedIn) {
+    welcomeMessage = 'Welcome back!'; // modifier la variable extérieure
+} else {
+    welcomeMessage = 'Welcome new user!'; // modifier la variable extérieure
+}
+
+console.log(welcomeMessage); // imprime 'Welcome back!'
+
+
+
+
+
+
+
+
+
+//////////// condition switch case
+
+switch (firstUser.accountLevel) {
+    case 'normal':
+        console.log('You have a normal account!');
+        break;
+    case 'premium':
+        console.log('You have a premium account!');
+        break;
+    case 'mega-premium':
+        console.log('You have a mega premium account!');
+        break;
+    default:
+        console.log('Unknown account type!');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//// boucle for :
+
+const numberOfPassengers = 10;
+
+for (let i = 0; i < numberOfPassengers; i++) {
+    console.log("Passager embarqué !");
+}
+
+
+
+
+
+
+
+
+
+let debutCompteARebours = 10;
+
+
+while (debutCompteARebours != 0) {
+   /// affciher le decompte.
+}
+
+
+
+
+
+
+
+
+//// vartiable taille d'ecran :
+
+var  largeur = screen.width;
+var hauteur = screen.height;
+////////// changer uen page :
+
+window.location = "http://www.mozilla.org";
+
+
+
+
+
+
+
+
+let passengersStillToBoard = 10;
+let seatsLeft = 0;
+
+while (seatsLeft > 0 && passengersStillToBoard > 0) {
+    passengersBoarded++; // un passager embarque
+    passengersStillToBoard--; // donc il y a un passager de moins à embarquer
+    seatsLeft--; // et un siège de moins
+}
+
+console.log(passengersBoarded); // imprime 8, car il y a 8 passagers pour 10 sièges
+
+
+
+
+////////// boucle while :
+
+let seatsLeft = 10;
+let passengersStillToBoard = 8;
+
+let passengersBoarded = 0;
+
+while (seatsLeft > 0 && passengersStillToBoard > 0) {
+    passengersBoarded++; // un passager embarque
+    passengersStillToBoard--; // donc il y a un passager de moins à embarquer
+    seatsLeft--; // et un siège de moins
+}
+
+console.log(passengersBoarded); // imprime 8, car il y a 8 passagers pour 10 sièges
+
+
+
+
+
+
+
+
+//////// tableaux
+let guests = [];
+let guests = ["Sarah Kate", "Audrey Simon", "Will Alexander"];
+let firstGuest = guests[0]; // "Sarah Kate"
+let thirdGuest = guests[2]; // "Will Alexander"
+let undefinedGuest = guests[12] // undefined
+
+
+let howManyGuests = guests.length; // 3
+
+guests.push("Tao Perkington"); // ajoute "Tao Perkington" à la fin de notre tableau guests
+guests.unshift("Tao Perkington"); // "Tao Perkington" est ajouté au début du tableau guests
+guests.pop(); // supprimer le dernier élément du tableau
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// boucle lecture tableaux
+
+const passengers = [
+    "Will Alexander",
+    "Sarah Kate'",
+    "Audrey Simon",
+    "Tao Perkington"
+]
+
+for (let i in passengers) {
+    console.log("Embarquement du passager " + passengers[i]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// un objet en javascript
+
+let myBook = {
+    title: "L'Histoire de Tao",
+    author: "Will Alexander",
+    numberOfPages: 250,
+    isAvailable: true
+};
+
+let bookTitle = myBook.title;  // "L'Histoire de Tao"
+let bookPages = myBook.numberOfPages  // 250
+
+
+
+
+
+////// les classes en Javascript
+
+class Book {
+    constructor(title, author, pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
+}
+// je crée l'objet.
+let myBook = new Book("L'Histoire de Tao", "Will Alexander", 250);
+
+///// ca crée ca :
+{
+    title: "L'Histoire de Tao",
+    author: "Will Alexander",
+    pages: 250
+}
+
+
+
+
+
+
+/////////////////// les methodes d'instance (fonction faisant partie d'une classe)
+
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+}
+
+/// on ajoute une methode à la classe :
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+	/// on ajoute une methode à la classe :
+    showBalance() {
+        console.log("Solde: " + this.balance + " EUR");
+    }
+}
+
+/// on crée un compte bancaire
+const newAccount = new BankAccount("Will Alexander", 500);
+
+
+/// grace a ca on peut appeler la methode de la classe :
+newAccount.showBalance(); 
+
+
+
+
+//// création d'autres mùéthodes : 
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+    
+    showBalance() {
+        console.log("Solde: " + this.balance + " EUR");
+    }
+    
+    deposit(amount) {
+        console.log("Dépôt de " + amount + " EUR");
+        this.balance += amount;
+        this.showBalance();
+    }
+    
+    withdraw(amount) {
+        if (amount > this.balance) {
+            console.log("Retrait refusé !");
+        } else {
+            console.log("Retrait de " + amount + " EUR");
+            this.balance -= amount;
+            this.showBalance();
+        }
+    }
+}
+
+/////////////////
+////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///// queqlues methodes statiques : 
+
+const randomNumber = Math.random(); // crée un nombre aléatoire sur l'intervalle [0, 1]
+
+const roundMeDown = Math.floor(495.966); // arrondit vers le bas à l'entier le plus proche, renvoie 495
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////// Manipulation du DOM ///////////////////////////////////////////
+
+
+
+var h = document.head; // La variable h contient l'objet head du DOM
+console.log(h);
+
+var b = document.body; // La variable b contient l'objet body du DOM
+console.log(b);
+
+
+
+
+
+/////////////  Différence noeud textuel et noeud element
+if (document.body.nodeType === document.ELEMENT_NODE) {
+    console.log("Body est un noeud élément");
+} else {
+    console.log("Body est un noeud textuel");
+}
+
+
+////////// accès au premier enfant du noeud body
+console.log(document.body.childNodes[10]);
+
+////////// accès que au contenu text par exemple :
+console.log(document.body.childNodes[10].textContent);
+/// exemple recuperer le charset 
+console.log(document.charset);
+
+
+				
+// Affiche les noeuds enfant du noeud body
+for (var i = 0; i < document.body.childNodes.length; i++) {
+console.log(document.body.childNodes[i]);
+}
+
+
+/////// accès au parent d'un noeud :
+var h1 = document.body.childNodes[1];
+console.log(h1.parentNode); // Affiche le noeud body
+
+console.log(document.parentNode); // Affiche null : document n'a aucun noeud parent
+
+
+
+///// difficulté de cibler un noeud précis :
+console.log(document.body.childNodes[5].childNodes[1]); // cible En prenant en compte les nœuds textuels vides associés aux espaces et aux retours à la ligne, il s'agit du deuxième nœud enfant du sixième nœud enfant du nœudbody
+
+
+///////// cible selon la balise
+var titresElts = document.getElementsByTagName("h2"); // Tous les titres h2
+console.log(titresElts[0]); // Affiche le premier titre h2
+console.log(titresElts.length); // Affiche 3
+
+
+
+///// cible selon leur classe :
+// Tous les éléments ayant la classe "merveilles"
+var merveillesElts = document.getElementsByClassName("merveilles");
+for (var i = 0; i < merveillesElts.length; i++) {
+    console.log(merveillesElts[i]);
+}
+
+
+
+//// cible selon leur identifiant : (id)
+// Elément portant l'identifiant "nouvelles"
+console.log(document.getElementById("nouvelles"));
+
+
+/// cibler grace aux selecteur CSS :
+// Tous les paragraphes
+console.log(document.querySelectorAll("p").length); // Affiche 3
+
+// Tous les paragraphes à l'intérieur de l'élément identifié par "contenu"
+console.log(document.querySelectorAll("#contenu p").length); // Affiche 2
+
+// Tous les éléments ayant la class "existe"
+console.log(document.querySelectorAll(".existe").length); // Affiche 8
+
+
+// Tous les éléments fils de l'élément identifié par "antiques" ayant la classe "existe"
+console.log(document.querySelectorAll("#antiques > .existe").length); // Affiche 1
+
+// Le premier paragraphe
+console.log(document.querySelector("p"));
+
+
+
+
+//////////////////// En recuperer le contenu 
+
+// Le contenu HTML de l'élément identifié par "contenu" grace à innerHTML
+console.log(document.getElementById("contenu").innerHTML);
+
+// Le contenu textuel de l'élément identifié par "contenu" (sans les balises)
+console.log(document.getElementById("contenu").textContent);
+
+// L'attribut href du premier lien
+console.log(document.querySelector("a").getAttribute("href"));
+
+
+//// vérification de la présence d'un attribut
+if (document.querySelector("a").hasAttribute("target")) {
+    console.log("Le premier lien possède l'attribut target");
+} else {
+    console.log("Le premier lien ne possède pas l'attribut target");
+}
+
+
+////////////////////////////////////////////// modifier le dom
+
+// Modification du contenu HTML de la liste : ajout d'un langage
+document.getElementById("langages").innerHTML += '<li id="c">C</li>';
+
+// Suppression du contenu HTML de la liste
+document.getElementById("langages").innerHTML = "";
+
+// Modification du contenu textuel du premier titre
+document.querySelector("h1").textContent += " de programmation";
+
+// Définition de l'attribut "id" du premier titre
+document.querySelector("h1").id = "titre";
+
+
+///// ajout d'"un nouvel elements :
+var pythonElt = document.createElement("li"); // Création d'un élément li
+pythonElt.id = "python"; // Définition de son identifiant
+pythonElt.textContent = "Python"; // Définition de son contenu textuel
+document.getElementById("langages").appendChild(pythonElt); // Insertion du nouvel élément Dans notre exemple, le nouvel élément est ajouté comme nouveau fils de la balise<ul> identifiée par "langages", après tous les autres fils de cette balise.
+
+
+////////////////////////////////////////////////////////// Modifier le style d'un element
+
+var pElt = document.querySelector("p"); //choisis le premier paragraphe
+pElt.style.color = "red"; ///change sa couleur
+pElt.style.margin = "50px"; //// change sa taille
+pElt.style.fontFamily = "Arial";
+pElt.style.backgroundColor = "black";
+
+/////////savoir le style d'un element :
+var stylePara = getComputedStyle(document.getElementById("para"));
+console.log(stylePara.fontStyle); // Affiche "italic"
+console.log(stylePara.color); // Affiche la couleur bleue en valeurs RGB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////// Les evenements //////////////////////////////////////////////////////////
+
+///html a mettre :   <button id="bouton">Cliquez-moi !</button>
+
+var boutonElt = document.getElementById("bouton");
+// Ajout d'un gestionnaire pour l'événement click
+boutonElt.addEventListener("click", function () {
+    console.log("clic");
+});
+
+///////////////////////////
+
+Événements clavier
+
+Appui ou relâchement d'une touche du clavier
+
+Événements souris
+
+Clic avec les différents boutons, appui ou relâchement d'un bouton de la souris, survol d'une zone avec la souris
+
+Événements fenêtre
+
+Chargement ou fermeture de la page, redimensionnement, défilement (scrolling)
+
+Événements formulaire
+
+Changement de cible de saisie (focus), envoi d'un formulaire
+
+
+
+// Gestion de l'appui sur une touche du clavier produisant un caractère
+document.addEventListener("keypress", function (e) {
+    console.log("Vous avez appuyé sur la touche");
+	console.log(e);
+});
+
+
+
+
+
+//// ou alors je crée d'abord la fonction puis j'ajoute l'écouteur d'évènements
+// Affiche des informations sur un événement clavier
+function infosClavier(e) {
+    console.log("Evènement clavier : " + e.type + ", touche : " + e.keyCode);
+}
+
+// Gestion de l'appui et du relâchement d'une touche du clavier
+document.addEventListener("keydown", infosClavier);
+document.addEventListener("keyup", infosClavier);
+
+
+
+/// ajout d'un evenement javascript dans une page html : <button onclick="myFunction()">Click me</button>
+
+
+
+////////////// position souris 
+
+/// version simple :
+
+    
+function infosSouris(e) {
+    console.log("Evènement souris : " + e.type + ", X : " + e.clientX + ", Y : " + e.clientY);
+}
+
+// Gestion du clic souris
+document.addEventListener("click", infosSouris);
+
+
+
+
+
+
+
+// Renvoie le nom du bouton souris à partir de son code
+function getBoutonSouris(code) {
+    var bouton = "inconnu";
+    switch (code) {
+    case 0: // 0 est le code du bouton gauche
+        bouton = "gauche";
+        break;
+    case 1: // 1 est le code du bouton du milieu
+        bouton = "milieu";
+        break;
+    case 2: // 2 est le code du bouton droit
+        bouton = "droit";
+        break;
+    }
+    return bouton;
+}
+
+// Affiche des informations sur un événement souris
+function infosSouris(e) {
+    console.log("Evènement souris : " + e.type + ", bouton " +
+        getBoutonSouris(e.button) + ", X : " + e.clientX + ", Y : " + e.clientY);
+}
+
+// Gestion du clic souris
+document.addEventListener("click", infosSouris);
+
+
+
+
+
+
+
+
+// Gestion de la fin du chargement de la page web
+window.addEventListener("load", function () {
+    console.log("Page entièrement chargée");
+});
+
+
+
+
+// Gestion de la fermeture de la page web
+window.addEventListener("beforeunload", function (e) {
+    var message = "On est bien ici !";
+    e.returnValue = message; // Provoque une demande de confirmation (standard)
+    return message; // Provoque une demande de confirmation (certains navigateurs)
+});
+
+
+//////////// encore d'autres ! https://developer.mozilla.org/fr/docs/Web/Events
+
+
+
+
+
+
+
+///////////// modifier le comportemebnt par défaut sur un lien
+///<p>Du temps à perdre ? <a id="interdit" href="https://9gag.com/">Cliquez ici</a></p>
+// Gestion du clic sur le lien interdit
+document.getElementById("interdit").addEventListener("click", function (e) {
+    console.log("Continuez plutôt à lire le cours ;)");
+    e.preventDefault(); // Annulation de la navigation vers la cible du lien
+});
+
+
+
+
+
+
+
+
+
+///////////////////////////////////// modifier les formulaires 
+// <label for="pseudo">Pseudo</label> :<input type="text" name="pseudo" id="pseudo" required><span id="aidePseudo"></span>
+var pseudoElt = document.getElementById("pseudo");
+pseudoElt.value = "MonPseudo";
+
+var aidePseudo;
+
+
+//// gérer le focus 
+// Affichage d'un message contextuel pour la saisie du pseudo
+pseudoElt.addEventListener("focus", function () {
+    document.getElementById("aidePseudo").textContent = "Entrez votre pseudo";
+});
+
+
+// Suppression du message contextuel pour la saisie du pseudo
+pseudoElt.addEventListener("blur", function (e) {
+    document.getElementById("aidePseudo").textContent = "";
+});
+
+
+
+
+// Focus sur la zone de saisie du pseudo
+pseudoElt.focus();
+
+
+
+
+
+
+/////// cases a cocher
+
+/// <input type="checkbox" name="confirmation" id="confirmation"><label for="confirmation">M'envoyer un courriel de confirmation</label>
+// Affichage de la demande de confirmation d'inscription
+document.getElementById("confirmation").addEventListener("change", function (e) {
+    console.log("Demande de confirmation : " + e.target.checked);
+});
+
+
+
+
+///// boutons radios
+
+// <input type="radio" name="abonnement" id="abonewspromo" value="abonewspromo"><label for="abonewspromo">M'abonner à la newsletter et aux promotions</label><br><input type="radio" name="abonnement" id="abonews" value="abonews"><label for="abonews">M'abonner uniquement à la newsletter</label><br><input type="radio" name="abonnement" id="aborien" value="aborien" checked><label for="aborien">Ne pas m'abonner</label><br>
+
+// Affichage du type d'abonnement choisi
+var aboElts = document.getElementsByName("abonnement");
+for (var i = 0; i < aboElts.length; i++) {
+    aboElts[i].addEventListener("change", function (e) {
+        console.log("Formule d'abonnement choisie : " + e.target.value);
+    });
+}
+
+
+/// listes déroulantes
+//<label for="nationalite">Nationalité :</label><select name="nationalite" id="nationalite">    <option value="FR" selected>Française</option>    <option value="BE">Belge</option>    <option value="SUI">Suisse</option>    <option value="XX">Autre</option></select>
+
+// Affichage du code de nationalité choisi
+document.getElementById("nationalite").addEventListener("change", function (e) {
+    console.log("Code de nationalité : " + e.target.value);
+});
+
+
+
+
+
+///////// Accès aux champs du formaulaire
+var form = document.querySelector("form");
+console.log("Nombre de champs de saisie : " + form.elements.length); // Affiche 10
+console.log(form.elements[0].name); // Affiche "pseudo"
+console.log(form.elements.mdp.type); // Affiche "password"
+
+
+
+
+////////////// soumission du formaulaire 
+<input type="submit" value="Envoyer">
+<input type="reset" value="Annuler">
+
+
+
+// Affiche de toutes les données saisies ou choisies
+form.addEventListener("submit", function (e) {
+    var pseudo = form.elements.pseudo.value;
+    var mdp = form.elements.mdp.value;
+    var courriel = form.elements.courriel.value;
+    console.log("Vous avez choisi le pseudo " + pseudo + ", le mot de passe " +
+        mdp + " et le courriel " + courriel);
+    if (form.elements.confirmation.checked) {
+        console.log("Vous avez demandé une confirmation d'inscription par courriel");
+    } else {
+        console.log("Vous n'avez pas demandé de confirmation d'inscription par courriel");
+    }
+    switch (form.elements.abonnement.value) {
+    case "abonewspromo":
+        console.log("Vous êtes abonné(e) à la newsletter et aux promotions");
+        break;
+    case "abonews":
+        console.log("Vous êtes abonné(e) à la newsletter");
+        break;
+    case "aborien":
+        console.log("Vous n'êtes abonné(e) à rien");
+        break;
+    default:
+        console.log("Erreur : code d'abonnement non reconnu");
+    }
+    switch (form.elements.nationalite.value) {
+    case "FR":
+        console.log("Vous êtes français(e)");
+        break;
+    case "BE":
+        console.log("Vous êtes belge");
+        break;
+    case "SUI":
+        console.log("Vous êtes suisse");
+        break;
+    default:
+        console.log("Erreur : code de nationalité non reconnu");
+    }
+    e.preventDefault(); // Annulation de l'envoi des données
+});
+
+
+
+
+////////: Validation d'un formualire pendant la saisie :
+
+// Vérification de la longueur du mot de passe saisi
+document.getElementById("mdp").addEventListener("input", function (e) {
+    var mdp = e.target.value; // Valeur saisie dans le champ mdp
+    var longueurMdp = "faible";
+    var couleurMsg = "red"; // Longueur faible => couleur rouge
+    if (mdp.length >= 8) {
+        longueurMdp = "suffisante";
+        couleurMsg = "green"; // Longueur suffisante => couleur verte
+    } else if (mdp.length >= 4) {
+        longueurMdp = "moyenne";
+        couleurMsg = "orange"; // Longueur moyenne => couleur orange
+    }
+    var aideMdpElt = document.getElementById("aideMdp");
+    aideMdpElt.textContent = "Longueur : " + longueurMdp; // Texte de l'aide
+    aideMdpElt.style.color = couleurMsg; // Couleur du texte de l'aide
+});
+
+
+
+
+/// validation a la fin de la saisie
+
+// Contrôle du courriel en fin de saisie
+document.getElementById("courriel").addEventListener("blur", function (e) {
+    var validiteCourriel = "";
+    if (e.target.value.indexOf("@") === -1) {
+        // Le courriel saisi ne contient pas le caractère @
+        validiteCourriel = "Adresse invalide";
+    }
+    document.getElementById("aideCourriel").textContent = validiteCourriel;
+});
+
+
+
+
+/////////////// Les regex
+var regex = /@/; // La chaîne doit contenir le caractère @
+console.log(regex.test("")); // Affiche false
+console.log(regex.test("@")); // Affiche true
+console.log(regex.test("sophie&mail.fr")); // Affiche false
+console.log(regex.test("sophie@mail.fr")); // Affiche true
+
+
+
+///// VOIR TABLEAU REGEX JAVASCRIPT
+
+
+
+/// verif courriel :
+// Contrôle du courriel en fin de saisie
+document.getElementById("courriel").addEventListener("blur", function (e) {
+    // Correspond à une chaîne de la forme xxx@yyy.zzz
+    var regexCourriel = /.+@.+\..+/;
+    var validiteCourriel = "";
+    if (!regexCourriel.test(e.target.value)) {
+        validiteCourriel = "Adresse invalide";
+    }
+    document.getElementById("aideCourriel").textContent = validiteCourriel;
+});
+
+
+
+
+
+</script>
+
+
+
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Animer une page</title>
+</head>
+
+<body>
+    <h1 id="titre">Cette page web s'autodétruira dans <span id="compteur">10</span> seconde(s)...</h1>
+
+    <script src="../js/cours.js"></script>
+</body>
+
+</html>
+
+
+
+<script>
+
+////////// Action répété
+
+var compteurElt = document.getElementById("compteur");
+
+// Diminue le compteur jusqu'à 0
+function diminuerCompteur() {
+    // Conversion en nombre du texte du compteur
+    var compteur = Number(compteurElt.textContent);        
+    compteurElt.textContent = compteur - 1;
+}
+
+// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
+setInterval(diminuerCompteur, 1000);
+
+
+
+
+
+
+
+/// Annuler une action répétée
+
+var compteurElt = document.getElementById("compteur");
+
+// Diminue le compteur jusqu'à 0
+function diminuerCompteur() {
+    // Conversion en nombre du texte du compteur
+    var compteur = Number(compteurElt.textContent);
+    if (compteur > 1) {
+        compteurElt.textContent = compteur - 1;
+    } else {
+        // Annule l'exécution répétée
+        clearInterval(intervalId);
+        // Modifie le titre de la page
+        var titre = document.getElementById("titre");
+        titre.textContent = "BOUM !!!";
+    }
+}
+
+// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
+var intervalId = setInterval(diminuerCompteur, 1000);
+
+
+
+
+
+
+
+
+
+////////////// Faire uen action après un délai :
+var compteurElt = document.getElementById("compteur");
+
+// Diminue le compteur jusqu'à 0
+function diminuerCompteur() {
+    // Conversion en nombre du texte du compteur
+    var compteur = Number(compteurElt.textContent);
+    if (compteur > 1) {
+        compteurElt.textContent = compteur - 1;
+    } else {
+        // Annule l'exécution répétée
+        clearInterval(intervalId);
+        // Modifie le titre de la page
+        var titre = document.getElementById("titre");
+        titre.textContent = "BOUM !!!";
+        // Modification du titre au bout de 2 secondes
+        setTimeout(function () {
+            titre.textContent = "Tout est cassé :(";
+        }, 2000);
+    }
+}
+
+
+
+// Appelle la fonction diminuerCompteur toutes les secondes (1000 millisecondes)
+var intervalId = setInterval(diminuerCompteur, 1000);
+
+
+
+
+
+
+///////////// Aller plus loin : Animer un élément d'une page 
+// <div id="cadre">    <div id="bloc"></div></div>
+
+https://openclassrooms.com/fr/courses/3306901-creez-des-pages-web-interactives-avec-javascript/3514976-animez-vos-pages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+//page web d'exemple : 
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Les sept merveilles du monde</title>
+</head>
+
+<body>
+    <h1>Les sept merveilles du monde</h1>
+    <p>Connaissez-vous les merveilles du monde ?</p>
+    <div id="contenu">
+        <h2>Merveilles du monde antique</h2>
+        <p>Cette liste nous vient de l'Antiquité.</p>
+        <ul class="merveilles" id="antiques">
+            <li class="existe">La pyramide de Khéops</li>
+            <li>Les jardins suspendus de Babylone</li>
+            <li>La statue de Zeus</li>
+            <li>Le temple d'Artémis</li>
+            <li>Le mausolée d'Halicarnasse</li>
+            <li>Le Colosse de Rhodes</li>
+            <li>Le phare d'Alexandrie</li>
+        </ul>
+        <h2>Nouvelles merveilles du monde</h2>
+        <p>Cette liste a été établie en 2009 à la suite d'un vote par Internet.</p>
+        <ul class="merveilles" id="nouvelles">
+            <li class="existe">La Grande Muraille de Chine</li>
+            <li class="existe">Pétra</li>
+            <Li class="existe">Le Christ du Corcovado</Li>
+            <Li class="existe">Machu Picchu</Li>
+            <li class="existe">Chichén Itzá</li>
+            <li class="existe">Le Colisée</li>
+            <li class="existe">Le Taj Mahal</li>
+        </ul>
+        <h2>Références</h2>
+        <ul>
+            <li><a href="https://fr.wikipedia.org/wiki/Sept_merveilles_du_monde">Merveilles antiques</a></li>
+            <li><a href="https://fr.wikipedia.org/wiki/Sept_nouvelles_merveilles_du_monde">Nouvelles merveilles</a></li>
+        </ul>
+    </div>
+
+    <script src="../js/cours.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Quelques langages</title>
+</head>
+
+<body>
+    <h1 class="debut">Quelques langages</h1>
+    <div id="contenu">
+        <ul id="langages">
+            <li id="cpp">C++</li>
+            <li id="java">Java</li>
+            <li id="csharp">C#</li>
+            <li id="php">PHP</li>
+        </ul>
+    </div>
+
+    <script src="../js/cours.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

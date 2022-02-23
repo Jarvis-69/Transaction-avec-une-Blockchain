@@ -1,0 +1,903 @@
+
+/////intégration
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+/////////////// premier code 
+<script>
+jQuery(document).ready(function(){
+  console.log("jQuery est prêt !");
+});
+
+////// c'est équivalent à 
+
+$(function(){
+  console.log('jQuery est prêt !');
+});
+
+
+
+
+
+
+////////////////////////// Le ciblage d'élèments  
+
+
+$('p'); // je sélectionne tous les paragraphes
+
+$('.maClasse'); // je sélectionne les éléments ayant .maClasse pour classe
+
+$('#monId'); // je sélectionne l'élément qui possède l'identifiant #monId
+
+
+$('p .lien');
+/* ici, nous sélectionnons tous les éléments ayant la classe .lien, 
+et contenus dans un paragraphe qui joue le rôle de parent */
+
+$('p > .lien');
+/* ici, nous sélectionnons seulement les éléments ayant la classe .lien,
+et descendants directement du paragraphe ! */
+
+$('.lien + .visite');
+/* la sélection s'effectue sur les éléments ayant pour classe .visite,
+et qui sont immédiatement précédés d'un élément ayant pour classe .lien */
+
+$('.lien ~ .visite');
+/* dans ce cas-là, ce sont tous les éléments .visite,
+précédés immédiatement ou non par un élément .lien */
+
+
+
+//////////// ciblage poussé 
+
+$('p:first'); // sélection du premier paragraphe trouvé
+
+$('a:last'); // ici, on sélectionne le dernier lien de la page
+
+$('p:eq(2)'); // On compte a partir de 0 car c'est un tableau : cette fonction selectionne le 3ème paragraphe 
+
+$('p[id]'); // retourne seulement les paragraphes ayant un identifiant
+
+$('input[name=pseudo]'); // cible seulement l'élément de formulaire ayant « pseudo » pour nom
+
+$('p:not(.rouge)'); // sélection de tous les paragraphes, sauf ceux ayant .rouge comme classe
+
+$('input:not(.bleu, .vert)'); // on sélectionne tous les éléments de formulaire sauf ceux ayant .bleu et/ou .vert comme classe
+
+var $element = $('monElement'); ///////////// comme en JS on peut sauvegarder un element dans une variable (plus pratique)
+
+
+
+
+////// ciblage spécial formulaire :
+
+$('input[type=button]'); // on sélectionne un input de type button
+
+$('input:button'); // on sélectionne un input de type button
+
+
+
+
+
+////////////// THIS le retour :
+
+$('p').each(function(){
+    
+    $(this).html('Hello World !'); // $(this) représente le paragraphe courant
+
+});
+
+
+
+//////////// les evenements avec JQUERY :
+
+$(document).ready(function(){
+    // Le code jQuery ici !
+});
+
+
+$("#uneDiv").click(function(){
+    // Le code a exécuter !
+});
+
+
+
+
+Clic:
+
+click()
+
+Double-clic:
+
+dblclick()
+
+Passage de la souris:
+
+hover()
+
+Rentrer dans un élément:
+
+mouseenter()
+
+Quitter un élément:
+
+mouseleave()
+
+Presser un bouton de la souris:
+
+mousedown()
+
+Relâcher un bouton de la souris:
+
+mouseup()
+
+Scroller (utiliser la roulette):
+
+scroll()
+
+//////////// écoute du clavier :
+
+keydown(), qui se lance lorsqu'une touche du clavier est enfoncée ;
+
+keypress(), qui se lance lorsqu'on maintient une touche enfoncée ;
+
+keyup(), qui se lance lorsqu'on relâche une touche préalablement enfoncée.
+
+
+
+
+$(document).keyup(function(touche){ // on écoute l'évènement keyup()
+
+    var appui = touche.which || touche.keyCode; // le code est compatible tous navigateurs grâce à ces deux propriétés
+
+    if(appui == 13){ // si le code de la touche est égal à 13 (Entrée)
+        alert('Vous venez d\'appuyer sur la touche Entrée !'); // on affiche une alerte
+    }
+});
+
+
+//////////// evenement sur les fomulaires :
+
+
+Focalisation:
+
+focus()
+
+Sélection (p.e. dans une liste):
+
+select()
+
+Changement de valeur:
+
+change()
+
+Envoi du formulaire:
+
+submit()
+
+
+//// déclenchement virtuel :
+
+$('p').click(function(){
+    alert('Cliqué !');
+});
+
+$('p').trigger('click'); // déclenche l'action au chargement du script
+
+
+
+
+////// Annuler un comportement classique
+
+$('a').click(function(e){
+    e.preventDefault(); // annule l'action du lien
+});
+
+
+
+
+////// l'écouteur d'évenement (equivalent addEventListener())
+
+$('button').on('click', function(){
+    alert('Ce code fonctionne !');
+});
+
+
+
+/////// ecouter deux evenements et declencher une même fonction : 
+$('button').on('click dblclick', function(){ // on écoute le clic et le double-clic !
+    alert('Ce code fonctionne !');
+});
+
+
+
+///////// notation en mode objet : 
+
+$('button').on({
+    click : function(){
+        alert('Vous avez cliqué !');
+    },
+    mouseup : function(){
+        alert('Vous avez relâché le clic !');
+    }
+});
+
+
+
+
+///////////// ciblage de paragraphe crée dynamiquement :
+
+$('div').on('click', 'p', function(){
+    alert('Les paragraphes créés peuvent être cliqués !');
+});
+
+
+//////// Les Namespaces
+
+$('button').on('click.nom', function(){
+    alert('Premier évènement');
+});
+
+$('button').on('click.prenom', function(){
+    alert('Second évènement');
+});
+
+$('button').trigger('click.nom'); // exécute le clic, MAIS ne lance que la première alerte !
+
+
+
+
+////////////// suppression d'évènements :
+
+$('p').on('click', function(){
+    // du code ici
+});
+
+$('p').off('click'); // supprime tous les gestionnaires écoutant le clic
+
+$('p').off(); // supprimer tous les gestionnaires de n'importe quel évènement
+
+
+
+////// suppression de délégation
+
+$('body').on('click', 'p', function(){
+    // du code ici
+});
+
+$('body').off('click', 'p'); // supprime tous les gestionnaires d'évènements délégués sur les paragraphes
+
+$('body').off('click', '**'); // supprime tous les gestionnaires d'évènements délégués
+
+
+
+
+
+/////////////////////////////// Manipuler le CSS d'une page:
+
+$('p').css('color'); // ma méthode ira chercher la valeur de la propriété "color" et retournera "green"
+
+$('p').css('color', 'red'); // ma méthode modifiera la propriété "color" et la définira à "red"
+
+$('p').css({
+    color : 'red', // couleur rouge
+    width : '300px', // largeur de 300px
+    height : '200px' // hauteur de 200px
+});
+
+$('p').css({
+    borderColor : 'red', // bordure rouge
+    paddingRight : '30px', // marge intérieure de 30px
+    'margin-left' : '10px' // marge extérieure de 10px
+});
+
+
+//// deplacement d'elements
+
+$('p').offset().left; // retourne la valeur "left" de l'élément (position absolue)
+
+$('p').position().top; // retourne la valeur "top" de l'élément (position relative)
+
+/////modifier sa position
+$('p').offset({
+    left : 30,
+    top : 200
+});
+
+$('p').position({
+    left : 200
+});
+
+
+//////// savoir les hauteurs / largeur etc...
+
+$('p').height(); // retourne la hauteur stricte du paragraphe
+
+$('p').innerWidth(); // retourne la largeur (avec marges intérieures) du paragraphe
+
+$('p').outerWidth(); // retourne la largeur (avec marges intérieures + bordures) du paragraphe
+
+$('p').outerHeight(true); // retourne la hauteur (avec marges intérieures + bordures + marges extérieures) du paragraphe
+
+
+
+/////////////////////////////////// Animations 
+
+duration : le temps de déroulement de l'animation, toujours en millisecondes ;
+
+easing : la façon d'accélerer de l'animation, c'est-à-dire comment va-t-elle évoluer au cours du temps ;
+
+complete : et enfin une fonction de callback, qui est l'action appelée lorsque l'animation est terminée.
+
+
+/// Lors du lancement de cette animation, mon paragraphe s'élargira, se déplacera par rapport à la hauteur du document, et verra sa taille de police se fixer à 35px.
+$('p').animate({
+    width : '150px',
+    fontSize : '35px', // ne pas oublier la syntaxe de l'identifiant !
+    marginTop : '50px'
+});
+
+
+
+
+///// réglage durée d'animation :
+
+$('p').animate({
+    width : '150px'
+}, 'fast'); // premier exemple avec la valeur fast (200ms)
+
+$('p').animate({
+    width : '150px'
+}, 1000); // second exemple avec 1000ms (= 1s)
+
+
+/// swing, qui est la valeur par défaut, fait aller l'animation de plus en plus vite au cours du temps, et ralentit à la fin ; linear, qui force l'animation à se dérouler à la même vitesse durant toute l'opération.
+
+$('p').animate({
+    width : '150px'
+}, 'linear'); // l'animation se déroulera de façon linéaire
+
+
+///// fonction de retour : callback
+$('p').animate({
+    width : '150px'
+}, function(){
+    alert('Animation terminée !');
+});
+
+
+
+
+
+//////// notation plus lisible
+
+$('p').animate({
+    width : '150px'
+}, 1000, 'linear', function(){
+    alert('Animation terminée !');
+}); 
+
+// ce code est égal à celui-ci :
+
+$('p').animate({
+    width : '150px'
+}, {
+    duration : 1000,
+    easing : 'linear',
+    complete : function(){
+        alert('Animation terminée !');
+    }
+});
+
+
+///////// step lancera une fonction à chaque étape de l'animation, c'est-à-dire à chaque propriété CSS traitée ;
+
+//////// queue déterminera si une animation doit se terminer avant d'en lancer une seconde, et prendra un booléen en tant que valeur.
+
+$('p').animate({
+        fontSize : '40px'
+    }, {
+        duration : 1000,
+        queue : true
+    })
+    .animate({
+        fontSize : '5px'
+    }, 1000);
+
+// les deux animations se lanceront l'une après l'autre
+
+
+
+
+
+///// definir des temporisation par attribut (designer son animation par attribut)
+
+$('p').animate({
+    fontSize : ['50px', 'linear'], // cette propriété s'animera de façon linéaire
+    width : '200px' // les autres s'animeront de la façon définie ensuite : swing
+}, 'swing');
+
+
+
+
+///////////////////// utiliser des bibliotheques opensource supplémentaires
+
+https://github.com/jquery/jquery-color
+
+$('p').animate({
+    color : 'red',
+    backgroundColor : 'green'
+});
+
+
+
+
+
+////// ajouter des valeurs à la valeur actuelle
+
+$('p').animate({
+    width : '+=50px', // ajoute 50px à la largeur
+    height : '-=20px' // enlève 20px à la hauteur
+});
+
+
+
+
+
+////// afficher ou cacher des élements
+
+$('p').hide('slow'); // cache le paragraphe en 600ms
+
+$('p').show('fast', function(){
+    alert('Paragraphe affiché !');
+}); // affiche le paragraphe en 200ms, et lance une alerte à la fin de l'animation
+
+
+
+
+/// cacher avec toggle
+
+$('p').toggle(true); // aura le même rôle que show()
+
+$('p').toggle(false); // aura le même rôle que hide()
+
+
+
+//// des manieres elegantes de disparaitre :
+
+slideDown() déroule l'élément pour l'afficher ;
+
+slideUp() enroule l'élément pour le cacher ;
+
+slideToggle() enroule ou déroule selon l'état courant de l'élément.
+
+
+fadeIn() affiche l'élément progressivement ;
+
+fadeOut() cache l'élément, en ajustant l'opacité également.
+
+fadeToggle() affiche ou cache l'élément, grâce à l'opacité.
+
+
+$('p').fadeOut(2000); /// fadeout magnifique
+
+$('p').fadeTo('normal', 0.5); // ajuste l'opacité et la fixe à 0.5
+
+
+
+
+////////////////// file d'attente des aniamtions :
+$('p').fadeOut();
+$('p').fadeIn();
+$('p').slideUp();
+$('p').slideDown();
+
+var fileAttente = $('p').queue('fx'); // je stocke la file d'attente, le tableau, dans une variable
+
+alert(fileAttente.length); // renvoie 4
+
+
+
+/// ajouter une fonction à la filke d'attente :
+$('p').fadeOut();
+$('p').fadeIn();
+$('p').slideUp();
+$('p').slideDown();
+
+$('p').queue(function(){
+    alert('Nouvelle fonction dans la file !'); // alerte s'affichant à la fin de la file
+});
+
+
+/// retirer une fonction à la filde d'attente
+$('p').fadeOut();
+$('p').fadeIn();
+$('p').slideUp();
+$('p').slideDown();
+
+$('p').queue('fx', []); // fait disparaître le paragraphe, puis vide la file d'attente
+
+
+
+/// ordonner la file d'attente :
+
+$('p')
+    .animate({
+        fontSize : '+=100px'
+    })
+    .queue(function(){
+        alert('Bonjour !');
+        $(this).dequeue();
+    })
+    .animate({
+        fontSize : '-=50px'
+    })
+    .queue(function(){
+        alert('Au revoir !');
+        $(this).dequeue();
+    });
+	
+la taille de la police augmente de 100 pixels,
+
+une nouvelle fonction est ajoutée à la file,
+
+une alerte affiche « Bonjour ! »,
+
+la méthode dequeue() permet de lancer l'animation suivante ;
+
+la taille de la police baisse de 50 pixels,
+
+une nouvelle fonction est ajoutée à la file,
+
+une alerte affiche « Au revoir ! »,
+
+la méthode dequeue() permet de ne pas entraver les futures animations sur l'élément.
+
+
+
+
+/// empecher une animation :
+$('p').animate({
+    fontSize : '100px'
+})
+.queue(function(){ // on ajoute une fonction à la file d'attente
+    alert('Bonjour !');
+})
+.clearQueue(); // empêche l'alerte de s'afficher
+
+
+
+
+/// stopper une animation en cours :
+
+$('p:animated').stop(); arrête l'animation courante ;
+
+$('p:animated').stop(true); annule toutes les animations suivantes, dont l'animation courante ;
+
+$('p:animated').stop(false, true); arrête l'animation courante, mais laisse l'élément aller à son état final ;
+
+$('p:animated').stop(true, true); annule toutes les animations suivantes, mais laisse l'élément courant aller à son état final.
+
+
+
+//////////////////////////////////////////// Modifier les attributs d'une balise HTML
+
+var cheminImage = $('img').attr('src'); // rentre le contenu de l'attribut src dans une variable
+
+
+$('img').attr('src', 'nouveauChemin/photo.png'); // change l'attribut src en écrasant l'ancienne valeur
+
+$('img').attr('title', 'Nouvelle photo'); // créé l'attribut title dans l'élément s'il n'existe pas
+
+
+
+
+/// plusisuers attributs à changer? Merci les objets :
+
+$('img').attr('src', 'nouveauChemin/photo.png');
+$('img').attr('alt', 'Nouvelle photo');
+$('img').attr('title', 'Nouvelle photo');
+// mauvaise méthode
+
+$('img').attr({
+    src : 'nouveauChemin/photo.png',
+    alt : 'Nouvelle photo',
+    title : 'Nouvelle photo'
+});
+// bonne méthode
+
+
+
+
+/// retirer un attribut 
+$('img').removeAttr('title'); // supprime l'attribut title des images
+
+
+
+///// Ajout d'une classe à un élément
+$('.vert').attr('class', 'rouge'); // cet élément aura la classe .rouge
+
+$('.vert').addClass('rouge'); // cet élément aura les classes .vert et .rouge
+
+$('.vert').addClass('rouge bleu jaune'); // cet élément aura les classes .vert, .rouge, .bleu et .jaune
+
+
+
+//// supprimer une classe 
+
+$('p').removeClass('vert'); // supprime la classe .vert de l'élément
+
+$('p').removeClass('vert rouge bleu'); // supprimer les classes .vert, .rouge et .bleu
+
+
+
+/// tester si un élément a une classe
+if( $('p').hasClass('vert') ){ // si l'élément possède la classe .vert
+    alert('Ce paragraphe est vert !'); // on affiche une alerte
+}
+
+
+
+
+/// switcher un element de classe :
+$('p').toggleClass('vert'); // ajoute la classe .vert si elle n'existe pas, sinon, la supprime
+
+// ces deux codes sont équivalents :
+$('p').addClass('vert');
+$('p').toggleClass('vert', true);
+
+// ces deux codes sont équivalents :
+$('p').removeClass('vert');
+$('p').toggleClass('vert', false);
+
+
+
+
+/////////////////////////////// Cibler dans  le DOM
+
+$('a').css('color', 'blue'); // rend le lien ciblé seulement de couleur bleue
+
+$('a').parent().css('color', 'blue');
+// ici, c'est le parent de l'enfant (un paragraphe, si l'on respecte la sémantique) qui verra son texte devenir bleu
+
+
+$('a').parent('.texte'); // retourne seulement l'ensemble des blocs parents ayant la classe .texte
+
+
+
+$('div').children(); // cible l'élément enfant direct du bloc div
+
+$('div').children('p'); // cible seulement l'ensemble des paragraphes enfants du bloc div
+
+
+
+$('body').find('p'); // cible l'ensemble des paragraphes contenus dans le corps du document, quelle que soit leur position !
+
+
+$('a').parents(); // cible tous les éléments ancêtres du lien : paragraphe, bloc(s), balise <body>...
+
+
+
+
+///// les freres (la balise présente juste à coté d'elle)
+prev(), qui sélectionne l'élément frère précédant directement l'objet ciblé ;
+
+next(), qui sélectionne l'élément frère suivant directement l'objet ciblé ;
+
+prevAll(), qui sélectionne tous les éléments frères précédant l'objet ciblé ;
+
+nextAll(), qui sélectionne tous les éléments frères suivant l'objet ciblé.
+
+
+
+
+
+//// les filtres :
+$('p').filter('.texte'); // supprime de la sélection tous les paragraphes n'ayant pas la classe .texte
+
+$('p').filter('.texte, #description');
+// supprime de la sélection tous les paragraphes n'ayant pas la classe .texte ou l'identifiant #description
+
+La méthode not() permet de faire la même chose, mais prend en argument les objets à ne pas prendre en compte.
+
+
+
+$('p').eq(2); // cible le troisième paragraphe trouvé (l'index commence à 0)
+
+$('div').slice(1, 3); // garde seulement les blocs div ayant l'index 1 ou 2
+
+
+
+
+///// Peu utilisé : vérifier  le type d'un élément 
+var vrai = $('div').is('div');
+var faux = $('div').is('p');
+
+console.log(vrai); // affiche true
+console.log(faux); // affiche false
+
+
+
+
+//////// boucler sur des éléments :
+$('p').each( function(){
+    alert( $(this).text() ); // $(this) représente l'objet courant
+} );
+
+
+
+
+
+
+
+
+/////////////////////////// Manipuler le contenu :
+
+
+$('p').text(); // renvoie le texte contenu à l'intérieur du paragraphe
+
+$('p').text('Nouveau contenu !'); // remplace le contenu actuel du paragraphe par "Nouveau contenu !"
+
+
+$('div').html(); // renvoie le code HTML contenu dans ce bloc div
+
+$('div').html('<p>Nouveau <strong>code</strong> !</p>'); // remplace le code HTML actuel par celui-ci
+
+
+
+$('p').prepend('<strong>Texte inséré avant le contenu actuel.</strong> '); // Ajouter du contenu HTML avant le contenu actuel
+
+
+$('p').append(' <strong>Texte inséré après le contenu actuel.</strong>');  // Ajouter du contenu HTML après le contenu actuel
+
+
+
+//// ajout de contenu avant ou aprés l'élément ciblé :
+
+$('p').before('<p>Paragraphe précédent</p>');
+
+$('p').after('<p>Paragraphe suivant</p>');
+
+
+
+///////// pour les formulaires : la value 
+
+$('input').val(); // retourne le contenu de l'élément input
+
+$('input').val('Nouvelle valeur !'); // modifie le contenu actuel de l'élément (écrase puis écrit)
+
+
+
+
+
+
+///// le clonage d'objet :
+
+var $clone = $('.objet').clone(); // on clone notre élément
+$('body').append($clone); // puis on l'ajoute à la fin de notre document !
+
+// on peut également tout écrire sur une seule ligne grâce au chaînage de méthode :
+$('.objet').clone().appendTo('body');
+
+
+
+
+//// vider ou supprimer des éléments
+
+$('p').empty(); // vide l'élément, seules subsisteront les balises <p></p> et leurs attributs
+
+$('p').remove(); // supprime l'élément, avec son contenu, rien n'en restera
+
+$('div').remove('.suppression'); // supprime les éléments portant la classe .suppression parmi les blocs div trouvés
+
+
+
+
+$('.pomme').replaceWith('<p>Cet élément a été remplacé !</p>');
+// on remplace l'élément .pomme par un nouvel élément créé pour l'occasion
+
+$('.pomme').replaceWith( $('.poire') );
+// ici, l'élément .pomme est remplacé par l'élément .poire, ce dernier va se déplacer
+
+$('.poire').replaceAll('.pomme');
+// inversement, on ordonne aux éléments .poire de remplacer tous les éléments .pomme trouvés
+
+
+
+
+
+//// un petit wrap? Encadrer de balises un élément :
+
+$('strong').wrap('<p />'); // entoure les balises <strong></strong> de balises de paragraphe
+
+$('span').wrap('<p class="description" />'); // il est possible de donner des attributs au nouveau parent
+
+$('span').unwrap(); // détruit le parent de tous les span
+
+$('li').wrapAll('<ul />'); // entoure tous les <li></li> d'un seul parent commun
+
+$('p').wrapInner('<strong />'); // entoure le contenu de balises <strong></strong>
+
+
+
+
+
+$('<div />').appendTo('body'); // créé un nouveau bloc div, et le place à la fin du corps du document
+
+
+
+Les sites indispensables :
+
+http://docs.jquery.com/Main_Page   ///la doc
+https://api.jquery.com/           /// les fonctions
+
+
+
+
+
+
+
+
+Aller plus loin : 
+https://jqueryui.com/   
+
+exemple : 
+
+on l'integre :   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+puis : 
+
+$('#fenetre').resizable(); 
+/* 
+   Je lance le plugin Resizable sur mon élément.
+   Cela aura pour effet de permettre à l'utilisateur de redimensionner ce bloc #fenetre
+*/
+glisser :draggable();
+
+déposer :droppable();
+
+redimensionner :resizable();
+
+sélectionner :selectable();
+
+ranger :sortable().
+
+
+
+
+
+Créer un site ne version mobile : jQuery Mobile
+
+
+https://demos.jquerymobile.com/1.0.1/docs/about/intro.html
+
+
+
+--  Les cookies en javascript !
+
+--  Jstorage 
+
+-- Canvas
+
+
+
+Site web de dev : 
+
+https://www.lafermeduweb.net/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
